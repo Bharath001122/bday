@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Thanmai Sri ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background: linear-gradient(135deg,#ff4d6d,#ff758c);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* Floating hearts */
+.bg-heart{
+    position:absolute;
+    animation: float 6s linear infinite;
+}
+@keyframes float{
+    from{transform:translateY(100vh);}
+    to{transform:translateY(-10vh);}
+}
+
+/* CARD */
+.card{
+    width:350px;
+    height:520px;
+    perspective:1000px;
+}
+.inner{
+    width:100%;
+    height:100%;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:1s;
+}
+.card.open .inner{transform:rotateY(180deg);}
+
+.front,.back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:20px;
+    backface-visibility:hidden;
+    background:white;
+    padding:20px;
+    text-align:center;
+}
+.back{
+    transform:rotateY(180deg);
+    overflow:auto;
+}
+
+/* Buttons */
+.btn{
+    display:block;
+    margin:8px auto;
+    padding:12px;
+    border:none;
+    border-radius:30px;
+    font-size:14px;
+    color:white;
+    width:85%;
+    cursor:pointer;
+}
+.heart{background:#ff4d6d;}
+.flower{background:#4caf50;}
+.disco{background:#7b2ff7;}
+.hug{background:#ff7e5f;}
+.cheers{background:#f9a825;}
+.magic{background:#5f2c82;}
+.open{background:#ff6a88;}
+.relight{background:#fbc02d; color:black;}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    top:0;left:0;
+    width:100%;
+    height:100%;
+    background:#f5f0f2;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+}
+
+/* LOVE FRAME */
+.modal img{
+    width:120px;
+    border-radius:50%;
+    margin-bottom:15px;
+    padding:5px;
+    background: linear-gradient(45deg,#ff4d6d,#ff1a75,#ff758c);
+    box-shadow:0 0 15px #ff4d6d;
+}
+
+/* Floating effects */
+.floating{
+    position:absolute;
+    animation:floatUp 4s linear;
+}
+@keyframes floatUp{
+    to{transform:translateY(-100vh); opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Background hearts -->
+<script>
+setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="bg-heart";
+    h.innerHTML="❤️";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+},400);
+</script>
+
+<div class="card" onclick="flip(this)">
+<div class="inner">
+
+<!-- FRONT -->
+<div class="front">
+    <h2>💌 Happy Birthday</h2>
+    <p>Tap to open ❤️</p>
+</div>
+
+<!-- BACK -->
+<div class="back">
+    <h3>Thanmai Sri ❤️</h3>
+
+    <p>
+        Wishing you a day bursting with 
+        <span style="color:#ff4d6d;">joy & laughter</span> 💖  
+        You deserve the whole universe ✨
+    </p>
+
+    <button class="btn heart" onclick="heartShower(event)">💖 Heart Shower</button>
+    <button class="btn flower" onclick="flowerBurst(event)">🌸 Flower Burst</button>
+    <button class="btn disco" onclick="disco(event)">🪩 Disco Mode</button>
+    <button class="btn hug" onclick="hug(event)">🤗 Send a Hug</button>
+    <button class="btn cheers" onclick="cheers(event)">🥂 Cheers</button>
+    <button class="btn magic" onclick="magic(event)">✨ Magic</button>
+
+    <button class="btn open" onclick="openWish(event)">💌 Open Your Wish</button>
+    <button class="btn relight" onclick="relight(event)">🕯 Relight</button>
+    <button class="btn heart" onclick="openGift(event)">🎁 Gift</button>
+</div>
+
+</div>
+</div>
+
+<!-- GIFT -->
+<div id="gift" class="modal" onclick="closeModal(this)">
+    <img src="https://iili.io/BcusGzF.jpg" style="width:75%; border-radius:20px;">
+</div>
+
+<!-- WISH -->
+<div id="wish" class="modal" onclick="closeModal(this)">
+
+    <img src="https://iili.io/Bcus1b1.jpg">
+
+    <div style="font-size:22px;">🌸 💖 🌸</div>
+
+    <h2 style="color:#ff4d6d;">For Thanmai Sri 💖</h2>
+
+    <p style="color:#444; line-height:1.6;">
+        May every dream you chase come true,  
+        every moment fill your heart with happiness,  
+        and every year be brighter than the last.
+    </p>
+
+    <p style="color:#ff4d6d; font-weight:bold;">
+        You're absolutely one-of-a-kind — never forget that! ✨
+    </p>
+
+    <p style="color:#777;">Here's to YOU! 🥂🎂✨</p>
+
+    <button style="
+        margin-top:15px;
+        padding:12px 25px;
+        border:none;
+        border-radius:30px;
+        background:linear-gradient(45deg,#ff4d6d,#ff758c);
+        color:white;
+        font-size:16px;
+    ">
+        Aww, Thank you! 💕
+    </button>
+
+</div>
+
+<script>
+
+/* Flip */
+function flip(card){
+    card.classList.toggle("open");
+}
+
+/* Effects */
+function spawn(symbol){
+    for(let i=0;i<20;i++){
+        let el=document.createElement("div");
+        el.className="floating";
+        el.innerHTML=symbol;
+        el.style.left=Math.random()*100+"vw";
+        document.body.appendChild(el);
+        setTimeout(()=>el.remove(),4000);
+    }
+}
+
+function heartShower(e){e.stopPropagation(); spawn("❤️");}
+function flowerBurst(e){e.stopPropagation(); spawn("🌸");}
+function disco(e){e.stopPropagation(); document.body.style.background="linear-gradient(90deg,red,blue,purple)";}
+function hug(e){e.stopPropagation(); alert("🤗 Sending you a big hug ❤️");}
+function cheers(e){e.stopPropagation(); spawn("🥂");}
+function magic(e){e.stopPropagation(); spawn("✨");}
+function relight(e){e.stopPropagation(); alert("✨ Your happiness shines again ❤️");}
+
+/* Modals */
+function openGift(e){
+    e.stopPropagation();
+    document.getElementById("gift").style.display="flex";
+}
+
+function openWish(e){
+    e.stopPropagation();
+    document.getElementById("wish").style.display="flex";
+}
+
+function closeModal(m){
+    m.style.display="none";
+}
+
+</script>
+
+</body>
+</html>
